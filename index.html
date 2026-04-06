@@ -6,7 +6,7 @@
 <title>WebEngage Performance Intelligence — Ionic Wealth</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-
+ 
 :root {
   --bg: #09111F;
   --bg2: #0F1A2E;
@@ -33,12 +33,12 @@
   --amber: #E09B3A;
   --amber-dim: rgba(224,155,58,0.1);
 }
-
+ 
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:12px;line-height:1.55;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-
+ 
 .page{max-width:1280px;margin:0 auto;padding:36px 32px;}
-
+ 
 /* HEADER */
 .header{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:24px;border-bottom:1px solid var(--border2);margin-bottom:32px;}
 .brand-tag{font-size:10px;font-weight:600;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}
@@ -47,30 +47,30 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .report-sub{font-size:12px;color:var(--text3);margin-top:5px;}
 .header-right{text-align:right;font-size:11px;color:var(--text3);}
 .header-right strong{display:block;font-size:13px;color:var(--text2);font-weight:500;margin-bottom:2px;}
-
+ 
 /* SECTION LABEL */
 .section-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
 .section-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;}
 .section-title{font-size:13px;font-weight:600;color:var(--text);}
 .section-meta{font-size:11px;color:var(--text3);margin-left:auto;}
 .section-divider{width:100%;height:1px;background:var(--border);margin-bottom:14px;}
-
+ 
 /* GRID SYSTEMS */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
 .g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
-
+ 
 /* CARDS */
 .card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;}
 .card-sm{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 14px;}
-
+ 
 /* METRIC CARDS */
 .metric{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;}
 .m-label{font-size:10px;letter-spacing:0.09em;text-transform:uppercase;color:var(--text3);margin-bottom:7px;font-weight:500;}
 .m-val{font-size:26px;font-weight:600;line-height:1;}
 .m-sub{font-size:10px;color:var(--text3);margin-top:5px;}
-
+ 
 /* TABLE */
 .tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);}
 table{width:100%;border-collapse:collapse;background:var(--bg2);}
@@ -79,7 +79,7 @@ th{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase
 td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text);font-size:11.5px;vertical-align:middle;}
 tr:last-child td{border-bottom:none;}
 .tbl-section-row td{background:var(--gold-dim);color:var(--gold);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:6px 12px;}
-
+ 
 /* BADGES */
 .badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:0.03em;}
 .bwh{background:var(--teal-dim);color:var(--teal);}
@@ -91,13 +91,13 @@ tr:last-child td{border-bottom:none;}
 .bstopped{background:var(--red-dim);color:var(--red);}
 .bsent{background:rgba(255,255,255,0.05);color:var(--text3);}
 .bscheduled{background:var(--amber-dim);color:var(--amber);}
-
+ 
 /* MINI BAR */
 .bar{display:flex;align-items:center;gap:7px;min-width:100px;}
 .bar-bg{flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;}
 .bar-fill{height:100%;border-radius:2px;}
 .bar-v{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);min-width:34px;text-align:right;}
-
+ 
 /* FUNNEL */
 .funnel{display:flex;flex-direction:column;gap:7px;}
 .frow{display:flex;align-items:center;gap:10px;}
@@ -105,7 +105,7 @@ tr:last-child td{border-bottom:none;}
 .fbar-bg{flex:1;height:24px;background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;}
 .fbar-fill{height:100%;display:flex;align-items:center;padding-left:10px;font-size:11px;font-weight:600;border-radius:4px;color:var(--bg);}
 .fpct{font-family:'JetBrains Mono',monospace;font-size:11px;width:38px;text-align:right;flex-shrink:0;}
-
+ 
 /* MONO */
 .mono{font-family:'JetBrains Mono',monospace;}
 .na{color:var(--text3);font-style:italic;font-size:10px;}
@@ -114,7 +114,7 @@ tr:last-child td{border-bottom:none;}
 .warn{color:var(--amber);}
 .bad{color:var(--red);}
 .dim{color:var(--text3);}
-
+ 
 /* INSIGHT CARDS */
 .insight{border-radius:8px;padding:14px 16px;border:1px solid;}
 .ins-gold{background:var(--gold-dim);border-color:rgba(200,168,75,0.2);}
@@ -127,36 +127,36 @@ tr:last-child td{border-bottom:none;}
 .ins-head{font-size:11px;font-weight:700;margin-bottom:6px;letter-spacing:0.02em;}
 .ins-body{font-size:11px;line-height:1.6;color:var(--text2);}
 .ins-body b{color:var(--text);font-weight:600;}
-
+ 
 /* CLUSTER WRAPPER */
 .cluster{margin-bottom:42px;}
-
+ 
 /* OUTCOME BOX */
 .outcome{border-radius:8px;padding:13px 16px;margin-top:12px;font-size:11.5px;}
 .out-gold{background:var(--gold-dim);border:1px solid rgba(200,168,75,0.2);color:var(--gold2);}
 .out-teal{background:var(--teal-dim);border:1px solid rgba(38,201,168,0.2);color:var(--teal);}
 .out-note{font-size:10px;color:var(--text3);margin-top:4px;}
-
+ 
 /* AUDIT FLAG */
 .flag{display:inline-flex;align-items:center;gap:5px;background:var(--red-dim);border:1px solid rgba(224,92,92,0.2);border-radius:4px;padding:2px 7px;font-size:10px;color:var(--red);font-weight:600;}
-
+ 
 /* DIVIDER */
 .divider{height:1px;background:var(--border);margin:36px 0;}
-
+ 
 /* TIER PILL */
 .tier{display:inline-block;padding:1px 7px;border-radius:3px;font-size:10px;font-weight:600;}
 .t1{background:var(--teal-dim);color:var(--teal);}
 .t2{background:var(--blue-dim);color:var(--blue);}
 .t3{background:var(--amber-dim);color:var(--amber);}
 .t4{background:var(--red-dim);color:var(--red);}
-
+ 
 /* SPARKLINE */
 .spark{display:flex;align-items:flex-end;gap:3px;height:30px;}
 .spark-bar{flex:1;background:var(--bg4);border-radius:2px 2px 0 0;min-width:8px;transition:background 0.2s;}
-
+ 
 /* FOOTER */
 .footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:10px;color:var(--text3);}
-
+ 
 @media print{
   body{background:#fff!important;color:#111!important;}
   :root{
@@ -179,7 +179,7 @@ tr:last-child td{border-bottom:none;}
 </head>
 <body>
 <div class="page">
-
+ 
 <!-- ══════ HEADER ══════ -->
 <div class="header">
   <div>
@@ -192,7 +192,45 @@ tr:last-child td{border-bottom:none;}
     April 2026
   </div>
 </div>
-
+ 
+<!-- ══════ FIRM-LEVEL OVERVIEW INSIGHTS ══════ -->
+<div style="margin-bottom:28px;">
+  <div class="section-head">
+    <div class="section-icon" style="background:var(--gold-dim);color:var(--gold);">★</div>
+    <div class="section-title">Firm-Level Learnings — What We Know After 24 Campaigns</div>
+    <div class="section-meta">Synthesised across all clusters · Sep '25 – Apr '26</div>
+  </div>
+  <div class="section-divider"></div>
+  <div class="g5" style="gap:12px;">
+ 
+    <div style="background:var(--bg3);border:1px solid rgba(38,201,168,0.15);border-radius:8px;padding:14px 16px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;">Audience Quality > Content Quality</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.6;">Open rates range <b style="color:var(--text);">59× </b> (59% Allocate clients → 1% cold meta lists). List recency and relationship depth predict engagement far more than creative or copy changes. Suppress stale lists after 90 days of inactivity.</div>
+    </div>
+ 
+    <div style="background:var(--bg3);border:1px solid rgba(200,168,75,0.15);border-radius:8px;padding:14px 16px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Precision Routing Beats Broad CTAs</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.6;">AOL v2 proved that <b style="color:var(--text);">lower clicks + higher conversions</b> is the goal. Separate deeplinks for MF vs stock fetch lifted conversion from 1% → 24% while halving CTR. Curiosity clicks ≠ intent.</div>
+    </div>
+ 
+    <div style="background:var(--bg3);border:1px solid rgba(74,143,224,0.15);border-radius:8px;padding:14px 16px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;">Real-World Events Unlock 2–3× Opens</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.6;">Union Budget hit <b style="color:var(--text);">54% open</b> on a cold audience that normally delivers 17–22%. Build standing templates for 6–8 annual events (RBI, Budget, LTCG, Nifty milestones) and deploy within 2 hours.</div>
+    </div>
+ 
+    <div style="background:var(--bg3);border:1px solid rgba(155,127,212,0.15);border-radius:8px;padding:14px 16px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--purple);margin-bottom:8px;">Multi-Channel Works — But Attribution Is Broken</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.6;">SIF drip showed <b style="color:var(--text);">10% journey-level conversion</b> while individual channel rates were 0.03–1%. Without cross-channel dedup, WebEngage credits last-touch only. Multi-touch attribution setup is overdue.</div>
+    </div>
+ 
+    <div style="background:var(--bg3);border:1px solid rgba(224,92,92,0.15);border-radius:8px;padding:14px 16px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--red);margin-bottom:8px;">Conversion Events Are Not Standardised</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.6;">Across 24 campaigns, "conversion" measures <b style="color:var(--text);">4 different things</b>: click, open, in-app event, or session start. Cross-campaign comparison is invalid until a unified intent event is adopted firm-wide.</div>
+    </div>
+ 
+  </div>
+</div>
+ 
 <!-- ══════ EXECUTIVE SUMMARY METRICS ══════ -->
 <div class="g5" style="margin-bottom:36px;">
   <div class="metric">
@@ -221,8 +259,8 @@ tr:last-child td{border-bottom:none;}
     <div class="m-sub">vs Nov–Jan baseline</div>
   </div>
 </div>
-
-
+ 
+ 
 <!-- ══════════════════════════════════════════════════════════════ -->
 <!-- CLUSTER 1 — SIF -->
 <!-- ══════════════════════════════════════════════════════════════ -->
@@ -233,7 +271,7 @@ tr:last-child td{border-bottom:none;}
     <div class="section-meta">Sep – Oct 2025 · WhatsApp + Email + Push · Audience: ~9K reachable + landing page visitors</div>
   </div>
   <div class="section-divider"></div>
-
+ 
   <!-- WA Journeys Table -->
   <div class="tbl-wrap" style="margin-bottom:14px;">
     <table>
@@ -290,7 +328,7 @@ tr:last-child td{border-bottom:none;}
     </table>
   </div>
   <div style="font-size:10px;color:var(--text3);margin-bottom:14px;">▲ "Login OTP" measures top-of-funnel app re-activation, not SIF investment intent. ★ "SIF Invest" is the correct bottom-funnel event — WA1–3 and WA4+ are not directly comparable.</div>
-
+ 
   <!-- Email + Push -->
   <div class="g2" style="margin-bottom:12px;">
     <div class="card">
@@ -337,7 +375,7 @@ tr:last-child td{border-bottom:none;}
       <div style="margin-top:10px;font-size:10.5px;color:var(--text3);">Push reach is app install–gated. invest_nudge (4.72%) confirms targeted urgency messaging beats broad alerts. sif_push_2 at 0% — likely a segment, timing, or DND issue. Investigate.</div>
     </div>
   </div>
-
+ 
   <!-- SIF Journey funnel + outcomes -->
   <div class="g2">
     <div class="card">
@@ -362,14 +400,39 @@ tr:last-child td{border-bottom:none;}
       <div style="margin-top:12px;font-size:10.5px;color:var(--text3);">11% click-through is the best click rate in the SIF cluster — indicates the ₹25L+ filtered audience had higher intent. Delivery at 35% signals WhatsApp opt-in gap for this segment.</div>
     </div>
   </div>
-
+ 
   <div class="outcome out-gold" style="margin-top:12px;">
-    <strong>SIF Cluster Outcomes:</strong> 2 firm client conversions · 5 new lead submissions via WebEngage · 3 DIY SIF transactions · 114 unique users proceeded to app from drip journey · SIF AUM attributed: ₹28.7Cr (across channels, WebEngage direct: ₹10L)
+    <strong>SIF Cluster — Consolidated Journey Outcome</strong>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:12px;">
+      <div style="text-align:center;">
+        <div class="mono" style="font-size:20px;font-weight:600;color:var(--gold2);">2</div>
+        <div style="font-size:10px;color:var(--text3);margin-top:2px;">Firm Conversions<br><span style="color:var(--gold);">(transacted)</span></div>
+      </div>
+      <div style="text-align:center;">
+        <div class="mono" style="font-size:20px;font-weight:600;color:var(--gold2);">5</div>
+        <div style="font-size:10px;color:var(--text3);margin-top:2px;">New Lead Submissions<br>via WebEngage</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="mono" style="font-size:20px;font-weight:600;color:var(--gold2);">3</div>
+        <div style="font-size:10px;color:var(--text3);margin-top:2px;">DIY SIF<br>Transactions</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="mono" style="font-size:20px;font-weight:600;color:var(--gold2);">114</div>
+        <div style="font-size:10px;color:var(--text3);margin-top:2px;">Unique Users<br>Proceeded to App</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="mono" style="font-size:20px;font-weight:600;color:var(--gold2);">₹28.7Cr</div>
+        <div style="font-size:10px;color:var(--text3);margin-top:2px;">SIF AUM Attributed<br><span style="color:var(--gold);">WE-direct: ₹10L</span></div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(200,168,75,0.15);font-size:10.5px;color:var(--text3);line-height:1.6;">
+      <strong style="color:var(--gold);">Cross-channel synthesis:</strong> WA drip (7 legs) drove top-of-funnel re-activation with 0.03–0.40% per-leg conversion; email drip (3 sends) sustained awareness with 16–20% opens; push notifications (5 sends) captured mid-day urgency with invest_nudge at 4.72% CTR. The combined multi-touch orchestration produced 10% journey-level conversion — significantly higher than any individual channel — validating the fail-safe architecture where WA legs 1–3 used Login OTP as re-activation and legs 4+ switched to SIF Invest as the true bottom-funnel goal. 1 SIF conversion attributed directly to a WebEngage-generated lead (assigned to Manish).
+    </div>
   </div>
 </div>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- ══════════════════════════════════════════════════════════════ -->
 <!-- CLUSTER 2 — NURTURE & FETCH PORTFOLIO -->
 <!-- ══════════════════════════════════════════════════════════════ -->
@@ -380,7 +443,7 @@ tr:last-child td{border-bottom:none;}
     <div class="section-meta">AOL CLM v1 &amp; v2 · Brand CLM · App CLM · Meta CLM · Ongoing</div>
   </div>
   <div class="section-divider"></div>
-
+ 
   <div class="tbl-wrap" style="margin-bottom:14px;">
     <table>
       <thead>
@@ -442,7 +505,7 @@ tr:last-child td{border-bottom:none;}
       </tbody>
     </table>
   </div>
-
+ 
   <!-- AOL v2 funnel -->
   <div class="g2">
     <div class="card">
@@ -482,12 +545,15 @@ tr:last-child td{border-bottom:none;}
         </tbody>
       </table>
       <div style="margin-top:10px;font-size:10.5px;color:var(--text3);">Click dropped in v2 but conversion rose 24x. This is intentional — v2's separate MF/stock deeplinks reduced casual clicks and surfaced only high-intent users. A textbook example of precision routing over broad CTA design.</div>
+      <div style="margin-top:8px;padding:8px 10px;background:var(--gold-dim);border-radius:6px;font-size:10.5px;color:var(--gold2);line-height:1.5;">
+        <strong>Normalised uplift (post-25 Jan, adjusting for traffic inflow increase):</strong> +21% stock portfolio fetching · +11–16% MF fetching — confirming journey-attributed lift beyond organic volume growth.
+      </div>
     </div>
   </div>
 </div>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- ══════════════════════════════════════════════════════════════ -->
 <!-- CLUSTER 3 — ENGAGEMENT & BRAND -->
 <!-- ══════════════════════════════════════════════════════════════ -->
@@ -498,7 +564,7 @@ tr:last-child td{border-bottom:none;}
     <div class="section-meta">One-off campaigns · All reachable users · Ongoing</div>
   </div>
   <div class="section-divider"></div>
-
+ 
   <div class="tbl-wrap">
     <table>
       <thead>
@@ -566,9 +632,9 @@ tr:last-child td{border-bottom:none;}
     </table>
   </div>
 </div>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- ══════════════════════════════════════════════════════════════ -->
 <!-- CLUSTER 4 — ALLOCATE CLIENT UPDATES -->
 <!-- ══════════════════════════════════════════════════════════════ -->
@@ -579,7 +645,7 @@ tr:last-child td{border-bottom:none;}
     <div class="section-meta">WhatsApp · Allocate clients · Monthly cadence</div>
   </div>
   <div class="section-divider"></div>
-
+ 
   <div class="g2">
     <div class="card">
       <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;">Monthly IRR Update — Journey Funnel (Jan–Mar '26)</div>
@@ -608,9 +674,9 @@ tr:last-child td{border-bottom:none;}
     </div>
   </div>
 </div>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- ══════════════════════════════════════════════════════════════ -->
 <!-- CLUSTER 5 — FEATURE LAUNCH + GLOBAL -->
 <!-- ══════════════════════════════════════════════════════════════ -->
@@ -621,7 +687,7 @@ tr:last-child td{border-bottom:none;}
     <div class="section-meta">Advance Tax · Global Webinar · Product Infographics · Ongoing</div>
   </div>
   <div class="section-divider"></div>
-
+ 
   <div class="tbl-wrap">
     <table>
       <thead>
@@ -686,9 +752,9 @@ tr:last-child td{border-bottom:none;}
     </table>
   </div>
 </div>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- ══════════════════════════════════════════════════════════════ -->
 <!-- CROSS-CLUSTER BENCHMARKS -->
 <!-- ══════════════════════════════════════════════════════════════ -->
@@ -698,7 +764,7 @@ tr:last-child td{border-bottom:none;}
     <div class="section-title">Open Rate Benchmark — All Campaigns Ranked</div>
   </div>
   <div class="section-divider"></div>
-
+ 
   <div class="card" style="margin-bottom:14px;">
     <div class="funnel">
       <div class="frow"><div class="flabel">Allocate monthly WA</div><div class="fbar-bg"><div class="fbar-fill" style="width:100%;background:var(--teal);">59%</div></div><div class="fpct good">59%</div></div>
@@ -721,9 +787,9 @@ tr:last-child td{border-bottom:none;}
     </div>
   </div>
 </div>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- ══════════════════════════════════════════════════════════════ -->
 <!-- EXPERT INSIGHTS -->
 <!-- ══════════════════════════════════════════════════════════════ -->
@@ -734,65 +800,65 @@ tr:last-child td{border-bottom:none;}
     <div class="section-meta">Data-driven insights across all clusters</div>
   </div>
   <div class="section-divider"></div>
-
+ 
   <div class="g2" style="margin-bottom:14px;">
-
+ 
     <div class="insight ins-red">
       <div class="ins-head" style="color:var(--red);">⚠ Conversion Event Contamination — Cross-Campaign Comparisons Are Invalid</div>
       <div class="ins-body">
         Across 24 campaigns, "conversion" measures <b>4 different things</b>: click (CITN, AssetX), open (Allocate WA, Advance Tax, AUM), specific in-app event (SIF Invest, portfolio fetch), and session start (Login OTP). Rolling these into a single "conversion rate" column creates a category error. <b>Allocate's 59% conversion isn't comparable to CITN's 8%</b> — they're measuring different funnel stages entirely. Recommendation: standardise a unified intent event (e.g. "app session &gt;60s" or "feature page visit") as the primary cross-campaign conversion signal going forward.
       </div>
     </div>
-
+ 
     <div class="insight ins-gold">
       <div class="ins-head" style="color:var(--gold);">◆ Audience Quality Is The Dominant Performance Variable — 59x Range</div>
       <div class="ins-body">
         Open rate ranges from <b>59% (Allocate clients)</b> to <b>1% (meta static list)</b> — a 59x spread. This is not a content quality problem; it's a list quality problem. The signal is clear: <b>relationship depth and recency of opt-in predict engagement better than any content variable</b>. Meta static list (cold, unreachable leads) produced 98% delivery but 1% open — the phone is ringing but no one's picking up. The spend on those sends is effectively wasted. Invest in opt-in health audits and suppress stale lists after 90 days of no activity.
       </div>
     </div>
-
+ 
     <div class="insight ins-teal">
       <div class="ins-head" style="color:var(--teal);">↑ AOL v2: The Click–Conversion Inversion Validates Intent-Based Routing</div>
       <div class="ins-body">
         v2 cut click rate from <b>25% → 12%</b> while lifting portfolio conversion from <b>1% → 24%</b>. This counterintuitive result is the hallmark of a well-designed intent funnel: separate deeplinks for MF vs stock fetch removed ambiguous clicks and routed users directly to the relevant action. <b>In CLM, a lower CTR with a higher conversion rate is always preferable</b> — it means you've stopped counting curiosity as intent. The 24% stock fetch rate is a genuine leading indicator of conversion readiness for these leads.
       </div>
     </div>
-
+ 
     <div class="insight ins-blue">
       <div class="ins-head" style="color:var(--blue);">⊞ Brand CLM: 5.5% Delivery Requires Immediate Diagnosis</div>
       <div class="ins-body">
         With 4,386 entries and only 242 delivered (<b>5.5% delivery rate</b>), Brand CLM has a structural problem — not a messaging problem. At this delivery rate, 94.5% of the journey's communication attempts are failing before the user sees a single word. Root causes to investigate in priority order: <b>(1) WhatsApp opt-in rate for brand UTM leads</b> — likely very low if leads came from paid media without explicit WA opt-in; <b>(2) DND &amp; frequency capping overlap</b> with other concurrent journeys; <b>(3) phone number quality</b> from UTM capture forms. Fix delivery before optimising content.
       </div>
     </div>
-
+ 
     <div class="insight ins-amber">
       <div class="ins-head" style="color:var(--amber);">⚡ Event-Triggered &gt; Scheduled: Union Budget Proves Real-World Urgency Is Irreplicable</div>
       <div class="ins-body">
         Union Budget achieved <b>54% open rate</b> — the second highest in the portfolio — on a cold/warm prospect audience that typically delivers 17–22%. The single variable: <b>real-world event urgency</b>. The human brain processes irreversibility (budget announced, market moving now) differently from scheduled drip content. This is a reproducible playbook — identify 6–8 annual financial events (RBI policy, Union Budget, LTCG changes, NFO closures, Nifty milestones) and build standing templates with pre-approved audience segments so you can deploy within 2 hours of the event.
       </div>
     </div>
-
+ 
     <div class="insight ins-purple">
       <div class="ins-head" style="color:var(--purple);">⊛ SIF Multi-Channel Orchestration: Attribution Gap Understates True Impact</div>
       <div class="ins-body">
         SIF WA drip ran simultaneously with email drip and push — the same user likely received all three. With no cross-channel deduplication in WebEngage, conversions are being attributed to whichever channel the user last engaged with. The actual journey-level conversion was <b>10% from the drip journey alone</b>, but the individual WA and email conversion rates are in the 0.03–1% range. <b>The multi-touch contribution model needs to be set up in WebEngage</b> to accurately credit the awareness function of WA and the intent-capture function of push. Currently you're measuring channel performance, not campaign performance.
       </div>
     </div>
-
+ 
     <div class="insight ins-green">
       <div class="ins-head" style="color:var(--green);">↗ Global Webinar: 51% Read / 2.36% Click — Classic Awareness-to-Action Friction</div>
       <div class="ins-body">
         The 51% read rate proves the content is compelling — HNI/UHNI prospects are reading WA messages about global investments. The <b>drop from 51% read to 2.36% click is a CTA design problem</b>, not an audience problem. For this cohort, friction at the link level is disproportionately high: they read on WhatsApp but won't leave to a browser without a strong reason. Recommendation: (1) move registration to a WhatsApp-native RSVP using a quick reply button rather than a link, (2) include a specific promise ("You'll see a live allocation into Japanese equities"), (3) A/B test time-of-send — this audience is likely checking WA at 8–10pm weekdays based on SIF timing learnings.
       </div>
     </div>
-
+ 
     <div class="insight ins-red">
       <div class="ins-head" style="color:var(--red);">◉ Allocate WA Delivery Ceiling at 61% — Meta Utility Classification Is Throttling High-Value Comms</div>
       <div class="ins-body">
         The Allocate monthly update is your <b>highest-quality communication</b> (59% open, direct client utility) yet delivery is capped at 61% due to Meta's utility message classification. The root cause is confirmed — punctuation and exclamation marks trigger a "marketing" classification that applies frequency capping. <b>Immediate fix</b>: run the message template through WhatsApp's policy checker before submission, remove all punctuation beyond periods and commas, and test as a transactional template. <b>Structural fix</b>: explore "service" message classification for portfolio update content — this bypasses marketing windows entirely and can deliver to opted-out users.
       </div>
     </div>
-
+ 
     <div class="insight ins-teal">
       <div class="ins-head" style="color:var(--teal);">◈ Audience Tier Framework — Predictive Engagement Segmentation</div>
       <div class="ins-body">
@@ -804,7 +870,7 @@ tr:last-child td{border-bottom:none;}
         Apply this tier as a segmentation attribute in WebEngage. Use RFM scoring on engagement history (opens, clicks, app sessions) to auto-classify users and route them into appropriate journey intensity.
       </div>
     </div>
-
+ 
     <div class="insight ins-gold">
       <div class="ins-head" style="color:var(--gold);">◆ Conversion Event Upgrade Roadmap — From Proxy to Intent</div>
       <div class="ins-body">
@@ -814,10 +880,10 @@ tr:last-child td{border-bottom:none;}
         <b>Phase 3:</b> Build a probabilistic conversion model: given a user's engagement sequence (WA read → app open → portfolio fetch), estimate the probability of RM conversion within 30/60/90 days. This directly ties your CLM work to AUM growth attribution.
       </div>
     </div>
-
+ 
   </div>
 </div>
-
+ 
 <!-- ══════════════════════════════════════════════════════════════ -->
 <!-- CONVERSION EVENT AUDIT TABLE -->
 <!-- ══════════════════════════════════════════════════════════════ -->
@@ -827,7 +893,7 @@ tr:last-child td{border-bottom:none;}
     <div class="section-title">Conversion Event Audit — Cross-Campaign Standardisation</div>
   </div>
   <div class="section-divider"></div>
-
+ 
   <div class="tbl-wrap">
     <table>
       <thead>
@@ -846,13 +912,14 @@ tr:last-child td{border-bottom:none;}
     </table>
   </div>
 </div>
-
+ 
 <!-- FOOTER -->
 <div class="footer">
   <div>Ionic Wealth · WebEngage Performance Intelligence Report · April 2026</div>
   <div>Prepared by Sumairah Rashid · Growth &amp; CRM · Confidential</div>
 </div>
-
+ 
 </div>
 </body>
 </html>
+ 
