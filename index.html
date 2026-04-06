@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebEngage Performance Intelligence — Ionic Wealth</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #09111F;
+  --bg2: #0F1A2E;
+  --bg3: #162038;
+  --bg4: #1C2844;
+  --border: rgba(255,255,255,0.06);
+  --border2: rgba(255,255,255,0.11);
+  --text: #E2E8F2;
+  --text2: #8B9AB5;
+  --text3: #4A5A72;
+  --gold: #C8A84B;
+  --gold2: #E8C97A;
+  --gold-dim: rgba(200,168,75,0.12);
+  --teal: #26C9A8;
+  --teal-dim: rgba(38,201,168,0.1);
+  --blue: #4A8FE0;
+  --blue-dim: rgba(74,143,224,0.1);
+  --red: #E05C5C;
+  --red-dim: rgba(224,92,92,0.1);
+  --green: #4DB87A;
+  --green-dim: rgba(77,184,122,0.1);
+  --purple: #9B7FD4;
+  --purple-dim: rgba(155,127,212,0.1);
+  --amber: #E09B3A;
+  --amber-dim: rgba(224,155,58,0.1);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:12px;line-height:1.55;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+.page{max-width:1280px;margin:0 auto;padding:36px 32px;}
+
+/* HEADER */
+.header{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:24px;border-bottom:1px solid var(--border2);margin-bottom:32px;}
+.brand-tag{font-size:10px;font-weight:600;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}
+.report-title{font-size:28px;font-weight:300;letter-spacing:-0.5px;color:var(--text);}
+.report-title b{font-weight:700;}
+.report-sub{font-size:12px;color:var(--text3);margin-top:5px;}
+.header-right{text-align:right;font-size:11px;color:var(--text3);}
+.header-right strong{display:block;font-size:13px;color:var(--text2);font-weight:500;margin-bottom:2px;}
+
+/* SECTION LABEL */
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.section-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;}
+.section-title{font-size:13px;font-weight:600;color:var(--text);}
+.section-meta{font-size:11px;color:var(--text3);margin-left:auto;}
+.section-divider{width:100%;height:1px;background:var(--border);margin-bottom:14px;}
+
+/* GRID SYSTEMS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+
+/* CARDS */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;}
+.card-sm{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 14px;}
+
+/* METRIC CARDS */
+.metric{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;}
+.m-label{font-size:10px;letter-spacing:0.09em;text-transform:uppercase;color:var(--text3);margin-bottom:7px;font-weight:500;}
+.m-val{font-size:26px;font-weight:600;line-height:1;}
+.m-sub{font-size:10px;color:var(--text3);margin-top:5px;}
+
+/* TABLE */
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);}
+table{width:100%;border-collapse:collapse;background:var(--bg2);}
+thead tr{background:var(--bg3);}
+th{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);padding:9px 12px;border-bottom:1px solid var(--border);text-align:left;white-space:nowrap;}
+td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text);font-size:11.5px;vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+.tbl-section-row td{background:var(--gold-dim);color:var(--gold);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:6px 12px;}
+
+/* BADGES */
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:0.03em;}
+.bwh{background:var(--teal-dim);color:var(--teal);}
+.bemail{background:var(--blue-dim);color:var(--blue);}
+.bpush{background:var(--amber-dim);color:var(--amber);}
+.bjourney{background:var(--purple-dim);color:var(--purple);}
+.boneoff{background:rgba(255,255,255,0.06);color:var(--text2);}
+.blive{background:var(--green-dim);color:var(--green);}
+.bstopped{background:var(--red-dim);color:var(--red);}
+.bsent{background:rgba(255,255,255,0.05);color:var(--text3);}
+.bscheduled{background:var(--amber-dim);color:var(--amber);}
+
+/* MINI BAR */
+.bar{display:flex;align-items:center;gap:7px;min-width:100px;}
+.bar-bg{flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:2px;}
+.bar-v{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);min-width:34px;text-align:right;}
+
+/* FUNNEL */
+.funnel{display:flex;flex-direction:column;gap:7px;}
+.frow{display:flex;align-items:center;gap:10px;}
+.flabel{font-size:11px;color:var(--text3);width:130px;flex-shrink:0;}
+.fbar-bg{flex:1;height:24px;background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;}
+.fbar-fill{height:100%;display:flex;align-items:center;padding-left:10px;font-size:11px;font-weight:600;border-radius:4px;color:var(--bg);}
+.fpct{font-family:'JetBrains Mono',monospace;font-size:11px;width:38px;text-align:right;flex-shrink:0;}
+
+/* MONO */
+.mono{font-family:'JetBrains Mono',monospace;}
+.na{color:var(--text3);font-style:italic;font-size:10px;}
+.good{color:var(--teal);}
+.mid{color:var(--gold);}
+.warn{color:var(--amber);}
+.bad{color:var(--red);}
+.dim{color:var(--text3);}
+
+/* INSIGHT CARDS */
+.insight{border-radius:8px;padding:14px 16px;border:1px solid;}
+.ins-gold{background:var(--gold-dim);border-color:rgba(200,168,75,0.2);}
+.ins-teal{background:var(--teal-dim);border-color:rgba(38,201,168,0.2);}
+.ins-red{background:var(--red-dim);border-color:rgba(224,92,92,0.2);}
+.ins-blue{background:var(--blue-dim);border-color:rgba(74,143,224,0.2);}
+.ins-purple{background:var(--purple-dim);border-color:rgba(155,127,212,0.2);}
+.ins-amber{background:var(--amber-dim);border-color:rgba(224,155,58,0.2);}
+.ins-green{background:var(--green-dim);border-color:rgba(77,184,122,0.2);}
+.ins-head{font-size:11px;font-weight:700;margin-bottom:6px;letter-spacing:0.02em;}
+.ins-body{font-size:11px;line-height:1.6;color:var(--text2);}
+.ins-body b{color:var(--text);font-weight:600;}
+
+/* CLUSTER WRAPPER */
+.cluster{margin-bottom:42px;}
+
+/* OUTCOME BOX */
+.outcome{border-radius:8px;padding:13px 16px;margin-top:12px;font-size:11.5px;}
+.out-gold{background:var(--gold-dim);border:1px solid rgba(200,168,75,0.2);color:var(--gold2);}
+.out-teal{background:var(--teal-dim);border:1px solid rgba(38,201,168,0.2);color:var(--teal);}
+.out-note{font-size:10px;color:var(--text3);margin-top:4px;}
+
+/* AUDIT FLAG */
+.flag{display:inline-flex;align-items:center;gap:5px;background:var(--red-dim);border:1px solid rgba(224,92,92,0.2);border-radius:4px;padding:2px 7px;font-size:10px;color:var(--red);font-weight:600;}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--border);margin:36px 0;}
+
+/* TIER PILL */
+.tier{display:inline-block;padding:1px 7px;border-radius:3px;font-size:10px;font-weight:600;}
+.t1{background:var(--teal-dim);color:var(--teal);}
+.t2{background:var(--blue-dim);color:var(--blue);}
+.t3{background:var(--amber-dim);color:var(--amber);}
+.t4{background:var(--red-dim);color:var(--red);}
+
+/* SPARKLINE */
+.spark{display:flex;align-items:flex-end;gap:3px;height:30px;}
+.spark-bar{flex:1;background:var(--bg4);border-radius:2px 2px 0 0;min-width:8px;transition:background 0.2s;}
+
+/* FOOTER */
+.footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:10px;color:var(--text3);}
+
+@media print{
+  body{background:#fff!important;color:#111!important;}
+  :root{
+    --bg:#fff;--bg2:#f9f9f9;--bg3:#f3f3f3;--bg4:#ececec;
+    --text:#111;--text2:#444;--text3:#888;
+    --border:#e2e2e2;--border2:#d0d0d0;
+    --gold:#7a5f10;--gold2:#6a5008;--gold-dim:#fdf8ec;
+    --teal:#097a68;--teal-dim:#e6f5f3;
+    --blue:#1a5ca8;--blue-dim:#eaf0fb;
+    --red:#a02020;--red-dim:#fdf0f0;
+    --green:#1a6a3a;--green-dim:#e8f5ef;
+    --purple:#6040a0;--purple-dim:#f0eafc;
+    --amber:#8a5a10;--amber-dim:#fdf5e6;
+  }
+  .cluster{page-break-inside:avoid;}
+  .card,.metric,.tbl-wrap,.insight{page-break-inside:avoid;}
+  @page{margin:18mm 15mm;size:A4;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ══════ HEADER ══════ -->
+<div class="header">
+  <div>
+    <div class="brand-tag">Ionic Wealth · Growth &amp; CRM</div>
+    <div class="report-title">WebEngage <b>Performance Intelligence</b></div>
+    <div class="report-sub">All clusters · Sep 2025 – Apr 2026 · 24 campaigns &amp; journeys · Compiled by Sumairah Rashid</div>
+  </div>
+  <div class="header-right">
+    <strong>Report Date</strong>
+    April 2026
+  </div>
+</div>
+
+<!-- ══════ EXECUTIVE SUMMARY METRICS ══════ -->
+<div class="g5" style="margin-bottom:36px;">
+  <div class="metric">
+    <div class="m-label">Campaigns tracked</div>
+    <div class="m-val">24</div>
+    <div class="m-sub">5 clusters · 3 channels</div>
+  </div>
+  <div class="metric">
+    <div class="m-label">Peak open rate</div>
+    <div class="m-val good">59%</div>
+    <div class="m-sub">Allocate monthly WA</div>
+  </div>
+  <div class="metric">
+    <div class="m-label">Best conversion</div>
+    <div class="m-val mid">43%</div>
+    <div class="m-sub">Allocate IRR journey</div>
+  </div>
+  <div class="metric">
+    <div class="m-label">SIF AUM attributed</div>
+    <div class="m-val" style="color:var(--purple);">₹28.7Cr</div>
+    <div class="m-sub">WE-direct: ₹10L + DIY</div>
+  </div>
+  <div class="metric">
+    <div class="m-label">AOL v2 stock fetch lift</div>
+    <div class="m-val" style="color:var(--teal);">+378%</div>
+    <div class="m-sub">vs Nov–Jan baseline</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- CLUSTER 1 — SIF -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="cluster">
+  <div class="section-head">
+    <div class="section-icon" style="background:var(--gold-dim);color:var(--gold);">1</div>
+    <div class="section-title">SIF Product Launch</div>
+    <div class="section-meta">Sep – Oct 2025 · WhatsApp + Email + Push · Audience: ~9K reachable + landing page visitors</div>
+  </div>
+  <div class="section-divider"></div>
+
+  <!-- WA Journeys Table -->
+  <div class="tbl-wrap" style="margin-bottom:14px;">
+    <table>
+      <thead>
+        <tr><td colspan="7" class="tbl-section-row">WhatsApp Journey Drip — Sequential Weekly Legs (Failsafe Architecture)</td></tr>
+        <tr>
+          <th>Journey</th><th>Date</th><th>Entries</th><th>Conv. Event</th><th>Conversions (abs)</th><th>Conv. Rate</th><th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SIF_Whatsapp_1</td><td class="dim">13 Sep</td><td class="mono">8,703</td>
+          <td style="font-size:10px;color:var(--text3);">Login OTP ▲</td>
+          <td class="mono">3</td><td><span class="mono bad">0.03%</span></td>
+          <td style="font-size:10px;color:var(--text3);">Leg 1 of failsafe pair</td>
+        </tr>
+        <tr>
+          <td>SIF_Whatsapp_1_updated</td><td class="dim">15 Sep</td><td class="mono">8,742</td>
+          <td style="font-size:10px;color:var(--text3);">Login OTP ▲</td>
+          <td class="mono">4</td><td><span class="mono warn">0.05%</span></td>
+          <td style="font-size:10px;color:var(--text3);">Leg 2 — uncapped segment</td>
+        </tr>
+        <tr>
+          <td>SIF_Whatsapp_2</td><td class="dim">16 Sep</td><td class="mono">8,757</td>
+          <td style="font-size:10px;color:var(--text3);">Login OTP ▲</td>
+          <td class="mono">13</td><td><span class="mono mid">0.15%</span></td>
+          <td style="font-size:10px;color:var(--text3);">Peak — 2nd touch effect</td>
+        </tr>
+        <tr>
+          <td>SIF_Whatsapp_3</td><td class="dim">17 Sep</td><td class="mono">8,842</td>
+          <td style="font-size:10px;color:var(--text3);">Login OTP ▲</td>
+          <td class="na">—</td><td class="na">no export</td>
+          <td style="font-size:10px;color:var(--text3);">—</td>
+        </tr>
+        <tr>
+          <td>SIF_Whatsapp_3_updated</td><td class="dim">18 Sep</td><td class="mono">8,906</td>
+          <td style="font-size:10px;color:var(--text3);">Login OTP ▲</td>
+          <td class="na">—</td><td class="na">no export</td>
+          <td style="font-size:10px;color:var(--text3);">—</td>
+        </tr>
+        <tr>
+          <td>SIF_Whatsapp_4_webinar</td><td class="dim">20 Sep</td><td class="mono">8,962</td>
+          <td style="font-size:10px;color:var(--gold);">SIF Invest ★</td>
+          <td class="mono">3</td><td><span class="mono warn">0.03%</span></td>
+          <td style="font-size:10px;color:var(--text3);">Webinar invite; goal switched</td>
+        </tr>
+        <tr>
+          <td>SIF_invest_nudge</td><td class="dim">14 Oct</td><td class="mono">253</td>
+          <td style="font-size:10px;color:var(--gold);">SIF Invest ★</td>
+          <td class="mono">1</td><td><span class="mono mid">0.40%</span></td>
+          <td style="font-size:10px;color:var(--text3);">Smallest, highest intent cohort</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="font-size:10px;color:var(--text3);margin-bottom:14px;">▲ "Login OTP" measures top-of-funnel app re-activation, not SIF investment intent. ★ "SIF Invest" is the correct bottom-funnel event — WA1–3 and WA4+ are not directly comparable.</div>
+
+  <!-- Email + Push -->
+  <div class="g2" style="margin-bottom:12px;">
+    <div class="card">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;">Email Drip — 3 One-Time Campaigns</div>
+      <table style="border:none;background:transparent;">
+        <thead><tr style="background:transparent;">
+          <th style="border-bottom:1px solid var(--border);">Campaign</th>
+          <th style="border-bottom:1px solid var(--border);">Delivered</th>
+          <th style="border-bottom:1px solid var(--border);">Open</th>
+          <th style="border-bottom:1px solid var(--border);">Click</th>
+          <th style="border-bottom:1px solid var(--border);">Conv.</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>SIF_Mail_1 <span class="dim" style="font-size:10px;">13 Sep</span></td><td class="mono">5,381</td>
+            <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:100%;background:var(--blue);"></div></div><span class="bar-v">20.2%</span></div></td>
+            <td class="mono warn">0.85%</td><td class="na">—</td></tr>
+          <tr><td>SIF_Mail_2 <span class="dim" style="font-size:10px;">15 Sep</span></td><td class="mono">5,400</td>
+            <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:99%;background:var(--blue);"></div></div><span class="bar-v">20.0%</span></div></td>
+            <td class="mono mid">1.63%</td><td class="na">—</td></tr>
+          <tr><td>sif_mail_3 <span class="dim" style="font-size:10px;">17 Sep</span></td><td class="mono">5,444</td>
+            <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:82%;background:var(--blue);"></div></div><span class="bar-v">16.6%</span></div></td>
+            <td class="mono warn">0.88%</td><td class="mono bad">0.07%</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:10px;font-size:10.5px;color:var(--text3);">Open decay across drip: −3.7pp. Click peaked at Mail 2 (day 2). Only Mail 3 has conversion tracking — attribution likely undercounts total journey impact.</div>
+    </div>
+    <div class="card">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;">Push Notifications — NFO Closing Urgency</div>
+      <table style="border:none;background:transparent;">
+        <thead><tr style="background:transparent;">
+          <th style="border-bottom:1px solid var(--border);">Campaign</th>
+          <th style="border-bottom:1px solid var(--border);">Delivered</th>
+          <th style="border-bottom:1px solid var(--border);">Click</th>
+          <th style="border-bottom:1px solid var(--border);">Conv.</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>sif_push_1 <span class="dim">17 Sep</span></td><td class="mono">1,325</td><td class="mono warn">1.66%</td><td class="na">—</td></tr>
+          <tr><td>sif_push_2 <span class="dim">25 Sep</span></td><td class="mono">145</td><td class="mono bad">0%</td><td class="na">—</td></tr>
+          <tr><td>sif_push_3 <span class="dim">3 Oct</span></td><td class="mono">306</td><td class="mono mid">2.94%</td><td class="na">—</td></tr>
+          <tr><td>sif_invest_nudge <span class="dim">14 Oct</span></td><td class="mono">106</td><td class="mono good">4.72%</td><td class="na">—</td></tr>
+          <tr><td>sif_live_now <span class="dim">31 Oct</span></td><td class="mono">1,063</td><td class="mono warn">2.26%</td><td class="na">—</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:10px;font-size:10.5px;color:var(--text3);">Push reach is app install–gated. invest_nudge (4.72%) confirms targeted urgency messaging beats broad alerts. sif_push_2 at 0% — likely a segment, timing, or DND issue. Investigate.</div>
+    </div>
+  </div>
+
+  <!-- SIF Journey funnel + outcomes -->
+  <div class="g2">
+    <div class="card">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;">SIF Drip Journey — Overall Funnel</div>
+      <div class="funnel">
+        <div class="frow"><div class="flabel">Delivered</div><div class="fbar-bg"><div class="fbar-fill" style="width:100%;background:var(--teal);">57%</div></div><div class="fpct good">57%</div></div>
+        <div class="frow"><div class="flabel">Opened</div><div class="fbar-bg"><div class="fbar-fill" style="width:70%;background:var(--blue);">40%</div></div><div class="fpct mid">40%</div></div>
+        <div class="frow"><div class="flabel">Clicked</div><div class="fbar-bg"><div class="fbar-fill" style="width:13%;background:var(--amber);">5%</div></div><div class="fpct warn">5%</div></div>
+        <div class="frow"><div class="flabel">Converted</div><div class="fbar-bg"><div class="fbar-fill" style="width:18%;background:var(--gold);">10%</div></div><div class="fpct mid">10%</div></div>
+      </div>
+      <div style="margin-top:12px;font-size:10.5px;color:var(--text3);">Conversion (10%) > Click (5%) is a signal that WebEngage is attributing conversions from users who came in via alternate paths post-communication — likely direct app opens after reading WA. This is correct multi-touch behavior but tracking should be tightened.</div>
+    </div>
+    <div class="card">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;">SIF Information Journey — High-Intent Segment</div>
+      <div style="font-size:10.5px;color:var(--text3);margin-bottom:10px;">Audience: Portfolio &gt;₹25L, excluding existing clients &amp; UHNI prospects</div>
+      <div class="funnel">
+        <div class="frow"><div class="flabel">Delivered</div><div class="fbar-bg"><div class="fbar-fill" style="width:61%;background:var(--teal);">35%</div></div><div class="fpct mid">35%</div></div>
+        <div class="frow"><div class="flabel">Opened</div><div class="fbar-bg"><div class="fbar-fill" style="width:71%;background:var(--blue);">25%</div></div><div class="fpct mid">25%</div></div>
+        <div class="frow"><div class="flabel">Clicked</div><div class="fbar-bg"><div class="fbar-fill" style="width:44%;background:var(--amber);">11%</div></div><div class="fpct mid">11%</div></div>
+        <div class="frow"><div class="flabel">Converted</div><div class="fbar-bg"><div class="fbar-fill" style="width:20%;background:var(--gold);">5%</div></div><div class="fpct warn">5%</div></div>
+      </div>
+      <div style="margin-top:12px;font-size:10.5px;color:var(--text3);">11% click-through is the best click rate in the SIF cluster — indicates the ₹25L+ filtered audience had higher intent. Delivery at 35% signals WhatsApp opt-in gap for this segment.</div>
+    </div>
+  </div>
+
+  <div class="outcome out-gold" style="margin-top:12px;">
+    <strong>SIF Cluster Outcomes:</strong> 2 firm client conversions · 5 new lead submissions via WebEngage · 3 DIY SIF transactions · 114 unique users proceeded to app from drip journey · SIF AUM attributed: ₹28.7Cr (across channels, WebEngage direct: ₹10L)
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- CLUSTER 2 — NURTURE & FETCH PORTFOLIO -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="cluster">
+  <div class="section-head">
+    <div class="section-icon" style="background:var(--teal-dim);color:var(--teal);">2</div>
+    <div class="section-title">Nurture &amp; Fetch Portfolio</div>
+    <div class="section-meta">AOL CLM v1 &amp; v2 · Brand CLM · App CLM · Meta CLM · Ongoing</div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="tbl-wrap" style="margin-bottom:14px;">
+    <table>
+      <thead>
+        <tr>
+          <th>Journey</th><th>Status</th><th>Audience</th><th>Delivery</th><th>Open / Read</th><th>Click</th><th>Conversion</th><th>Conversion Definition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AOL CLM v1</td>
+          <td><span class="badge bstopped">Stopped</span></td>
+          <td style="font-size:10px;color:var(--text3);">Old AOL cohort by persona</td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:50%;background:var(--amber);"></div></div><span class="bar-v">50%</span></div></td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:15.6%;background:var(--blue);"></div></div><span class="bar-v">15.6%</span></div></td>
+          <td class="mono good">25%</td>
+          <td><span class="mono warn">1%</span></td>
+          <td style="font-size:10px;color:var(--text3);">MF fetch</td>
+        </tr>
+        <tr>
+          <td>AOL CLM v2</td>
+          <td><span class="badge blive">Ongoing</span></td>
+          <td style="font-size:10px;color:var(--text3);">New AOL cohort &gt;₹50L</td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:69.4%;background:var(--green);"></div></div><span class="bar-v">69.4%</span></div></td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:20.5%;background:var(--blue);"></div></div><span class="bar-v">20.5%</span></div></td>
+          <td class="mono mid">12%</td>
+          <td><span class="mono good">24%</span></td>
+          <td style="font-size:10px;color:var(--teal);">Stock portfolio import (110 abs)</td>
+        </tr>
+        <tr>
+          <td>Brand Campaign CLM</td>
+          <td><span class="badge blive">Live</span></td>
+          <td style="font-size:10px;color:var(--text3);">Brand UTM leads (4,386 entries)</td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:5.5%;background:var(--red);"></div></div><span class="bar-v bad">5.5%</span></div></td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:3%;background:var(--blue);"></div></div><span class="bar-v bad">3%</span></div></td>
+          <td class="mono bad">1%</td>
+          <td><span class="mono bad">0.43%</span></td>
+          <td style="font-size:10px;color:var(--text3);">Portfolio pull (21 abs / 4,836)</td>
+        </tr>
+        <tr>
+          <td>App downloaded, not fetched</td>
+          <td><span class="badge blive">Live</span></td>
+          <td style="font-size:10px;color:var(--text3);">App installed, no fetch in 3 days</td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:50%;background:var(--amber);"></div></div><span class="bar-v">50%</span></div></td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:11%;background:var(--blue);"></div></div><span class="bar-v">11%</span></div></td>
+          <td class="mono mid">9%</td>
+          <td><span class="mono warn">1.83%</span></td>
+          <td style="font-size:10px;color:var(--text3);">Portfolio fetch</td>
+        </tr>
+        <tr>
+          <td>Meta leads CLM (static list)</td>
+          <td><span class="badge bsent">Sent</span></td>
+          <td style="font-size:10px;color:var(--text3);">~4K unreachable meta leads</td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:98%;background:var(--teal);"></div></div><span class="bar-v">98%</span></div></td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:1%;background:var(--blue);"></div></div><span class="bar-v bad">1%</span></div></td>
+          <td class="mono bad">0%</td>
+          <td><span class="mono bad">0%</span></td>
+          <td style="font-size:10px;color:var(--text3);">Portfolio fetch</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- AOL v2 funnel -->
+  <div class="g2">
+    <div class="card">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;">AOL v2 — Event Uplift vs Baseline (Nov '25 – Jan '26)</div>
+      <div class="funnel">
+        <div class="frow">
+          <div class="flabel">Login OTP click</div>
+          <div class="fbar-bg"><div class="fbar-fill" style="width:100%;background:var(--teal);">93 users</div></div>
+          <div class="fpct good">+133%</div>
+        </div>
+        <div class="frow">
+          <div class="flabel">Portfolio view</div>
+          <div class="fbar-bg"><div class="fbar-fill" style="width:100%;background:var(--blue);">121 users</div></div>
+          <div class="fpct mid">+78%</div>
+        </div>
+        <div class="frow">
+          <div class="flabel">MF OTP submitted</div>
+          <div class="fbar-bg"><div class="fbar-fill" style="width:84%;background:var(--blue);">101 users</div></div>
+          <div class="fpct good">+140%</div>
+        </div>
+        <div class="frow">
+          <div class="flabel">Stocks imported</div>
+          <div class="fbar-bg"><div class="fbar-fill" style="width:91%;background:var(--gold);">110 users</div></div>
+          <div class="fpct" style="color:var(--gold);">+378%</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;">v1 vs v2 — Journey Architecture Impact</div>
+      <table style="border:none;background:transparent;">
+        <thead><tr style="background:transparent;"><th style="border-bottom:1px solid var(--border);">Metric</th><th style="border-bottom:1px solid var(--border);">v1</th><th style="border-bottom:1px solid var(--border);">v2</th><th style="border-bottom:1px solid var(--border);">Delta</th></tr></thead>
+        <tbody>
+          <tr><td>Delivery</td><td class="mono">50%</td><td class="mono good">69.4%</td><td class="good">+39pp</td></tr>
+          <tr><td>Open rate</td><td class="mono">15.6%</td><td class="mono mid">20.5%</td><td class="mid">+5pp</td></tr>
+          <tr><td>Click rate</td><td class="mono good">25%</td><td class="mono mid">12%</td><td class="bad">−13pp</td></tr>
+          <tr><td>Conv. (portfolio)</td><td class="mono bad">1%</td><td class="mono good">24%</td><td class="good">+23pp</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:10px;font-size:10.5px;color:var(--text3);">Click dropped in v2 but conversion rose 24x. This is intentional — v2's separate MF/stock deeplinks reduced casual clicks and surfaced only high-intent users. A textbook example of precision routing over broad CTA design.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- CLUSTER 3 — ENGAGEMENT & BRAND -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="cluster">
+  <div class="section-head">
+    <div class="section-icon" style="background:var(--blue-dim);color:var(--blue);">3</div>
+    <div class="section-title">Engagement &amp; Brand</div>
+    <div class="section-meta">One-off campaigns · All reachable users · Ongoing</div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Campaign</th><th>Channel</th><th>Status</th><th>Audience</th><th>Delivery</th><th>Open</th><th>Click</th><th>Conv.</th><th>Conv. Event</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monthly AssetX / Chartbook</td>
+          <td><span class="badge bemail">Email</span></td>
+          <td><span class="badge blive">Ongoing</span></td>
+          <td style="font-size:10px;color:var(--text3);">All reachable</td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:100%;background:var(--green);"></div></div><span class="bar-v">100%</span></div></td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:37%;background:var(--blue);"></div></div><span class="bar-v">22%</span></div></td>
+          <td class="mono bad">1%</td>
+          <td class="mono warn">1%</td>
+          <td style="font-size:10px;color:var(--text3);">Click</td>
+        </tr>
+        <tr>
+          <td>Ad-hoc CITN</td>
+          <td><span class="badge bemail">Email</span></td>
+          <td><span class="badge blive">Ongoing</span></td>
+          <td style="font-size:10px;color:var(--text3);">All reachable</td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:100%;background:var(--green);"></div></div><span class="bar-v">100%</span></div></td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:59%;background:var(--blue);"></div></div><span class="bar-v">35%</span></div></td>
+          <td class="mono mid">8%</td>
+          <td class="mono mid">8%</td>
+          <td style="font-size:10px;color:var(--text3);">Click</td>
+        </tr>
+        <tr>
+          <td>Union Budget (4-part series)</td>
+          <td><span class="badge bemail">Email</span></td>
+          <td><span class="badge bsent">Sent</span></td>
+          <td style="font-size:10px;color:var(--text3);">All except clients</td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:98%;background:var(--green);"></div></div><span class="bar-v">98%</span></div></td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:91%;background:var(--teal);"></div></div><span class="bar-v good">54%</span></div></td>
+          <td class="mono mid">7%</td>
+          <td class="mono mid">7%</td>
+          <td style="font-size:10px;color:var(--text3);">Click</td>
+        </tr>
+        <tr>
+          <td>Allocate Press Announcement</td>
+          <td><span class="badge bemail">Email</span></td>
+          <td><span class="badge bsent">Sent</span></td>
+          <td style="font-size:10px;color:var(--text3);">Clients + ML-personalised prospects</td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:99%;background:var(--green);"></div></div><span class="bar-v">99%</span></div></td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:66%;background:var(--blue);"></div></div><span class="bar-v">39%</span></div></td>
+          <td class="na">N/A</td>
+          <td class="mono mid">39%</td>
+          <td style="font-size:10px;color:var(--text3);">Open (same as open rate)</td>
+        </tr>
+        <tr>
+          <td>AUM $1B Announcement</td>
+          <td><span class="badge bemail">Email</span></td>
+          <td><span class="badge bsent">Sent</span></td>
+          <td style="font-size:10px;color:var(--text3);">All reachable</td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:99%;background:var(--green);"></div></div><span class="bar-v">99%</span></div></td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:29%;background:var(--blue);"></div></div><span class="bar-v">17%</span></div></td>
+          <td class="na">N/A</td>
+          <td class="mono warn">17%</td>
+          <td style="font-size:10px;color:var(--text3);">Open (same as open rate)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- CLUSTER 4 — ALLOCATE CLIENT UPDATES -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="cluster">
+  <div class="section-head">
+    <div class="section-icon" style="background:var(--green-dim);color:var(--green);">4</div>
+    <div class="section-title">Allocate Client Updates</div>
+    <div class="section-meta">WhatsApp · Allocate clients · Monthly cadence</div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="g2">
+    <div class="card">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;">Monthly IRR Update — Journey Funnel (Jan–Mar '26)</div>
+      <div class="funnel">
+        <div class="frow"><div class="flabel">Journey started</div><div class="fbar-bg"><div class="fbar-fill" style="width:100%;background:var(--teal);">139</div></div></div>
+        <div class="frow"><div class="flabel">WA sent</div><div class="fbar-bg"><div class="fbar-fill" style="width:73%;background:var(--blue);">102</div></div><div class="fpct warn">73%</div></div>
+        <div class="frow"><div class="flabel">WA read</div><div class="fbar-bg"><div class="fbar-fill" style="width:59%;background:var(--gold);">60</div></div><div class="fpct mid">43%</div></div>
+      </div>
+      <div style="display:flex;gap:24px;margin-top:16px;">
+        <div><div class="m-val good" style="font-size:20px;">43.2%</div><div class="m-sub">Conversion</div></div>
+        <div><div class="m-val" style="font-size:20px;">7h 7m</div><div class="m-sub">Avg time to convert</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;">Allocate WA Monthly — Historical Tracker</div>
+      <table style="border:none;background:transparent;">
+        <thead><tr style="background:transparent;"><th style="border-bottom:1px solid var(--border);">Metric</th><th style="border-bottom:1px solid var(--border);">Value</th><th style="border-bottom:1px solid var(--border);">Note</th></tr></thead>
+        <tbody>
+          <tr><td>Delivery</td><td class="mono mid">61%</td><td style="font-size:10px;color:var(--text3);">Meta utility classification issue</td></tr>
+          <tr><td>Open rate</td><td class="mono good">59%</td><td style="font-size:10px;color:var(--text3);">Highest in portfolio</td></tr>
+          <tr><td>Click rate</td><td class="mono bad">0%</td><td style="font-size:10px;color:var(--text3);">No CTA — direct app access</td></tr>
+          <tr><td>Conversion</td><td class="mono good">59%</td><td style="font-size:10px;color:var(--text3);">= Open rate (message read = goal)</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:10px;font-size:10.5px;color:var(--text3);">Delivery at 61% vs 99% for emails — WhatsApp utility classification by Meta is the bottleneck. Exclamation marks/punctuation trigger downgrade. Thursday sends outperform.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- CLUSTER 5 — FEATURE LAUNCH + GLOBAL -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="cluster">
+  <div class="section-head">
+    <div class="section-icon" style="background:var(--purple-dim);color:var(--purple);">5</div>
+    <div class="section-title">Feature Launch &amp; Global Drip</div>
+    <div class="section-meta">Advance Tax · Global Webinar · Product Infographics · Ongoing</div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Campaign</th><th>Type</th><th>Status</th><th>Audience</th><th>Delivery</th><th>Open</th><th>Click</th><th>Conv.</th><th>Conv. Event</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Advance Tax Drip</td>
+          <td><span class="badge boneoff">One-off + Journey</span></td>
+          <td><span class="badge blive">Ongoing</span></td>
+          <td style="font-size:10px;color:var(--text3);">All reachable</td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:50%;background:var(--amber);"></div></div><span class="bar-v">50%</span></div></td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:35%;background:var(--blue);"></div></div><span class="bar-v">21%</span></div></td>
+          <td class="mono bad">1%</td>
+          <td class="mono mid">21%</td>
+          <td style="font-size:10px;color:var(--text3);">Open (same as open rate)</td>
+        </tr>
+        <tr>
+          <td>Global Webinar (3 sends)</td>
+          <td><span class="badge bwh">WhatsApp</span></td>
+          <td><span class="badge bsent">Sent</span></td>
+          <td style="font-size:10px;color:var(--text3);">All except clients (4,491 sent)</td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:87%;background:var(--teal);"></div></div><span class="bar-v">52.2%</span></div></td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:85%;background:var(--blue);"></div></div><span class="bar-v good">51%</span></div></td>
+          <td class="mono warn">2.36%</td>
+          <td class="mono warn">2.36%</td>
+          <td style="font-size:10px;color:var(--text3);">Click (webinar reg link)</td>
+        </tr>
+        <tr>
+          <td>WhiteOak Product Infographic</td>
+          <td><span class="badge bwh">WhatsApp</span></td>
+          <td><span class="badge bsent">Sent</span></td>
+          <td style="font-size:10px;color:var(--text3);">Global products userbase (141 sent)</td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:19%;background:var(--amber);"></div></div><span class="bar-v warn">19.1%</span></div></td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:21%;background:var(--blue);"></div></div><span class="bar-v">12.8%</span></div></td>
+          <td class="mono warn">1.4%</td>
+          <td class="mono bad">1.4%</td>
+          <td style="font-size:10px;color:var(--text3);">Click</td>
+        </tr>
+        <tr>
+          <td>LRS + OPI Infographic</td>
+          <td><span class="badge bwh">WhatsApp</span></td>
+          <td><span class="badge bscheduled">Scheduled</span></td>
+          <td style="font-size:10px;color:var(--text3);">Global products userbase (161 sent)</td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:37%;background:var(--amber);"></div></div><span class="bar-v warn">36.6%</span></div></td>
+          <td><div class="bar"><div class="bar-bg"><div class="bar-fill" style="width:34%;background:var(--blue);"></div></div><span class="bar-v">20.5%</span></div></td>
+          <td class="mono bad">0.6%</td>
+          <td class="mono bad">0.6%</td>
+          <td style="font-size:10px;color:var(--text3);">Click</td>
+        </tr>
+        <tr>
+          <td>App Feature Announcement (PA, AA, Cofounder)</td>
+          <td><span class="badge bjourney">Journey</span></td>
+          <td><span class="badge bsent">Sent</span></td>
+          <td style="font-size:10px;color:var(--text3);">All except clients</td>
+          <td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td>
+          <td style="font-size:10px;color:var(--text3);">Export pending</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- CROSS-CLUSTER BENCHMARKS -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="cluster">
+  <div class="section-head">
+    <div class="section-icon" style="background:rgba(255,255,255,0.05);color:var(--text2);">≡</div>
+    <div class="section-title">Open Rate Benchmark — All Campaigns Ranked</div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="card" style="margin-bottom:14px;">
+    <div class="funnel">
+      <div class="frow"><div class="flabel">Allocate monthly WA</div><div class="fbar-bg"><div class="fbar-fill" style="width:100%;background:var(--teal);">59%</div></div><div class="fpct good">59%</div></div>
+      <div class="frow"><div class="flabel">Union Budget series</div><div class="fbar-bg"><div class="fbar-fill" style="width:91%;background:var(--teal);">54%</div></div><div class="fpct good">54%</div></div>
+      <div class="frow"><div class="flabel">Global Webinar WA</div><div class="fbar-bg"><div class="fbar-fill" style="width:86%;background:var(--blue);">51%</div></div><div class="fpct good">51%</div></div>
+      <div class="frow"><div class="flabel">SIF Drip Journey</div><div class="fbar-bg"><div class="fbar-fill" style="width:68%;background:var(--blue);">40%</div></div><div class="fpct mid">40%</div></div>
+      <div class="frow"><div class="flabel">Allocate Press</div><div class="fbar-bg"><div class="fbar-fill" style="width:66%;background:var(--blue);">39%</div></div><div class="fpct mid">39%</div></div>
+      <div class="frow"><div class="flabel">Ad-hoc CITN</div><div class="fbar-bg"><div class="fbar-fill" style="width:59%;background:var(--gold);">35%</div></div><div class="fpct mid">35%</div></div>
+      <div class="frow"><div class="flabel">SIF Info Journey</div><div class="fbar-bg"><div class="fbar-fill" style="width:42%;background:var(--gold);">25%</div></div><div class="fpct mid">25%</div></div>
+      <div class="frow"><div class="flabel">AssetX / Chartbook</div><div class="fbar-bg"><div class="fbar-fill" style="width:37%;background:var(--amber);">22%</div></div><div class="fpct warn">22%</div></div>
+      <div class="frow"><div class="flabel">Advance Tax Drip</div><div class="fbar-bg"><div class="fbar-fill" style="width:36%;background:var(--amber);">21%</div></div><div class="fpct warn">21%</div></div>
+      <div class="frow"><div class="flabel">AOL CLM v2</div><div class="fbar-bg"><div class="fbar-fill" style="width:35%;background:var(--amber);">20.5%</div></div><div class="fpct warn">20.5%</div></div>
+      <div class="frow"><div class="flabel">LRS + OPI Infographic</div><div class="fbar-bg"><div class="fbar-fill" style="width:35%;background:var(--amber);">20.5%</div></div><div class="fpct warn">20.5%</div></div>
+      <div class="frow"><div class="flabel">AUM $1B Announcement</div><div class="fbar-bg"><div class="fbar-fill" style="width:29%;background:var(--amber);">17%</div></div><div class="fpct warn">17%</div></div>
+      <div class="frow"><div class="flabel">AOL CLM v1</div><div class="fbar-bg"><div class="fbar-fill" style="width:26%;background:var(--red);">15.6%</div></div><div class="fpct bad">15.6%</div></div>
+      <div class="frow"><div class="flabel">WhiteOak Infographic</div><div class="fbar-bg"><div class="fbar-fill" style="width:22%;background:var(--red);">12.8%</div></div><div class="fpct bad">12.8%</div></div>
+      <div class="frow"><div class="flabel">App not fetched</div><div class="fbar-bg"><div class="fbar-fill" style="width:19%;background:var(--red);">11%</div></div><div class="fpct bad">11%</div></div>
+      <div class="frow"><div class="flabel">Brand CLM</div><div class="fbar-bg"><div class="fbar-fill" style="width:5%;background:var(--red);">3%</div></div><div class="fpct bad">3%</div></div>
+      <div class="frow"><div class="flabel">Meta static list CLM</div><div class="fbar-bg"><div class="fbar-fill" style="width:2%;background:var(--red);">1%</div></div><div class="fpct bad">1%</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- EXPERT INSIGHTS -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="cluster">
+  <div class="section-head">
+    <div class="section-icon" style="background:var(--purple-dim);color:var(--purple);">◈</div>
+    <div class="section-title">Strategic Intelligence — CLM Analysis</div>
+    <div class="section-meta">Data-driven insights across all clusters</div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="g2" style="margin-bottom:14px;">
+
+    <div class="insight ins-red">
+      <div class="ins-head" style="color:var(--red);">⚠ Conversion Event Contamination — Cross-Campaign Comparisons Are Invalid</div>
+      <div class="ins-body">
+        Across 24 campaigns, "conversion" measures <b>4 different things</b>: click (CITN, AssetX), open (Allocate WA, Advance Tax, AUM), specific in-app event (SIF Invest, portfolio fetch), and session start (Login OTP). Rolling these into a single "conversion rate" column creates a category error. <b>Allocate's 59% conversion isn't comparable to CITN's 8%</b> — they're measuring different funnel stages entirely. Recommendation: standardise a unified intent event (e.g. "app session &gt;60s" or "feature page visit") as the primary cross-campaign conversion signal going forward.
+      </div>
+    </div>
+
+    <div class="insight ins-gold">
+      <div class="ins-head" style="color:var(--gold);">◆ Audience Quality Is The Dominant Performance Variable — 59x Range</div>
+      <div class="ins-body">
+        Open rate ranges from <b>59% (Allocate clients)</b> to <b>1% (meta static list)</b> — a 59x spread. This is not a content quality problem; it's a list quality problem. The signal is clear: <b>relationship depth and recency of opt-in predict engagement better than any content variable</b>. Meta static list (cold, unreachable leads) produced 98% delivery but 1% open — the phone is ringing but no one's picking up. The spend on those sends is effectively wasted. Invest in opt-in health audits and suppress stale lists after 90 days of no activity.
+      </div>
+    </div>
+
+    <div class="insight ins-teal">
+      <div class="ins-head" style="color:var(--teal);">↑ AOL v2: The Click–Conversion Inversion Validates Intent-Based Routing</div>
+      <div class="ins-body">
+        v2 cut click rate from <b>25% → 12%</b> while lifting portfolio conversion from <b>1% → 24%</b>. This counterintuitive result is the hallmark of a well-designed intent funnel: separate deeplinks for MF vs stock fetch removed ambiguous clicks and routed users directly to the relevant action. <b>In CLM, a lower CTR with a higher conversion rate is always preferable</b> — it means you've stopped counting curiosity as intent. The 24% stock fetch rate is a genuine leading indicator of conversion readiness for these leads.
+      </div>
+    </div>
+
+    <div class="insight ins-blue">
+      <div class="ins-head" style="color:var(--blue);">⊞ Brand CLM: 5.5% Delivery Requires Immediate Diagnosis</div>
+      <div class="ins-body">
+        With 4,386 entries and only 242 delivered (<b>5.5% delivery rate</b>), Brand CLM has a structural problem — not a messaging problem. At this delivery rate, 94.5% of the journey's communication attempts are failing before the user sees a single word. Root causes to investigate in priority order: <b>(1) WhatsApp opt-in rate for brand UTM leads</b> — likely very low if leads came from paid media without explicit WA opt-in; <b>(2) DND &amp; frequency capping overlap</b> with other concurrent journeys; <b>(3) phone number quality</b> from UTM capture forms. Fix delivery before optimising content.
+      </div>
+    </div>
+
+    <div class="insight ins-amber">
+      <div class="ins-head" style="color:var(--amber);">⚡ Event-Triggered &gt; Scheduled: Union Budget Proves Real-World Urgency Is Irreplicable</div>
+      <div class="ins-body">
+        Union Budget achieved <b>54% open rate</b> — the second highest in the portfolio — on a cold/warm prospect audience that typically delivers 17–22%. The single variable: <b>real-world event urgency</b>. The human brain processes irreversibility (budget announced, market moving now) differently from scheduled drip content. This is a reproducible playbook — identify 6–8 annual financial events (RBI policy, Union Budget, LTCG changes, NFO closures, Nifty milestones) and build standing templates with pre-approved audience segments so you can deploy within 2 hours of the event.
+      </div>
+    </div>
+
+    <div class="insight ins-purple">
+      <div class="ins-head" style="color:var(--purple);">⊛ SIF Multi-Channel Orchestration: Attribution Gap Understates True Impact</div>
+      <div class="ins-body">
+        SIF WA drip ran simultaneously with email drip and push — the same user likely received all three. With no cross-channel deduplication in WebEngage, conversions are being attributed to whichever channel the user last engaged with. The actual journey-level conversion was <b>10% from the drip journey alone</b>, but the individual WA and email conversion rates are in the 0.03–1% range. <b>The multi-touch contribution model needs to be set up in WebEngage</b> to accurately credit the awareness function of WA and the intent-capture function of push. Currently you're measuring channel performance, not campaign performance.
+      </div>
+    </div>
+
+    <div class="insight ins-green">
+      <div class="ins-head" style="color:var(--green);">↗ Global Webinar: 51% Read / 2.36% Click — Classic Awareness-to-Action Friction</div>
+      <div class="ins-body">
+        The 51% read rate proves the content is compelling — HNI/UHNI prospects are reading WA messages about global investments. The <b>drop from 51% read to 2.36% click is a CTA design problem</b>, not an audience problem. For this cohort, friction at the link level is disproportionately high: they read on WhatsApp but won't leave to a browser without a strong reason. Recommendation: (1) move registration to a WhatsApp-native RSVP using a quick reply button rather than a link, (2) include a specific promise ("You'll see a live allocation into Japanese equities"), (3) A/B test time-of-send — this audience is likely checking WA at 8–10pm weekdays based on SIF timing learnings.
+      </div>
+    </div>
+
+    <div class="insight ins-red">
+      <div class="ins-head" style="color:var(--red);">◉ Allocate WA Delivery Ceiling at 61% — Meta Utility Classification Is Throttling High-Value Comms</div>
+      <div class="ins-body">
+        The Allocate monthly update is your <b>highest-quality communication</b> (59% open, direct client utility) yet delivery is capped at 61% due to Meta's utility message classification. The root cause is confirmed — punctuation and exclamation marks trigger a "marketing" classification that applies frequency capping. <b>Immediate fix</b>: run the message template through WhatsApp's policy checker before submission, remove all punctuation beyond periods and commas, and test as a transactional template. <b>Structural fix</b>: explore "service" message classification for portfolio update content — this bypasses marketing windows entirely and can deliver to opted-out users.
+      </div>
+    </div>
+
+    <div class="insight ins-teal">
+      <div class="ins-head" style="color:var(--teal);">◈ Audience Tier Framework — Predictive Engagement Segmentation</div>
+      <div class="ins-body">
+        Based on observed open rate patterns, your reachable database has at least <b>4 distinct engagement tiers</b>:<br><br>
+        <b>Tier 1 (50–60% open):</b> Allocate clients, event-triggered prospects — highest intent, known relationship<br>
+        <b>Tier 2 (30–40% open):</b> Warm prospects with recent interaction (Union Budget, Press release, SIF drip)<br>
+        <b>Tier 3 (15–25% open):</b> AOL leads, product-informed prospects — mid funnel<br>
+        <b>Tier 4 (&lt;5% open):</b> Cold/stale lists — meta UTM leads, unreachable static lists<br><br>
+        Apply this tier as a segmentation attribute in WebEngage. Use RFM scoring on engagement history (opens, clicks, app sessions) to auto-classify users and route them into appropriate journey intensity.
+      </div>
+    </div>
+
+    <div class="insight ins-gold">
+      <div class="ins-head" style="color:var(--gold);">◆ Conversion Event Upgrade Roadmap — From Proxy to Intent</div>
+      <div class="ins-body">
+        Currently, most campaigns use <b>proxy metrics</b> (opens, clicks) as conversion goals. To measure true CLM impact, transition to intent-level events in this sequence:<br><br>
+        <b>Phase 1 (immediate):</b> Standardise "portfolio imported" and "feature page visited" as primary conversion events across all nurture journeys<br>
+        <b>Phase 2 (next quarter):</b> Connect WebEngage journey completions to STORM lead stage transitions — measure journey → stage upgrade rate<br>
+        <b>Phase 3:</b> Build a probabilistic conversion model: given a user's engagement sequence (WA read → app open → portfolio fetch), estimate the probability of RM conversion within 30/60/90 days. This directly ties your CLM work to AUM growth attribution.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- CONVERSION EVENT AUDIT TABLE -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="cluster">
+  <div class="section-head">
+    <div class="section-icon" style="background:var(--red-dim);color:var(--red);">!</div>
+    <div class="section-title">Conversion Event Audit — Cross-Campaign Standardisation</div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>Campaign</th><th>Conv. Event Used</th><th>Funnel Stage</th><th>Recommended Event</th><th>Gap</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>AssetX / Chartbook</td><td>Click</td><td><span class="tier t3">Mid</span></td><td>App session &gt;60s post-click</td><td class="warn">Proxy — doesn't confirm engagement quality</td></tr>
+        <tr><td>Ad-hoc CITN</td><td>Click</td><td><span class="tier t3">Mid</span></td><td>Article read time event</td><td class="warn">Proxy — no post-click behaviour tracked</td></tr>
+        <tr><td>Allocate WA monthly</td><td>Open / Read</td><td><span class="tier t4">Top</span></td><td>Portfolio IRR page viewed in app</td><td class="bad">Too early — read ≠ consumed</td></tr>
+        <tr><td>Advance Tax Drip</td><td>Open</td><td><span class="tier t4">Top</span></td><td>Tax calculator used in app</td><td class="bad">Too early — open ≠ action</td></tr>
+        <tr><td>AOL CLM v2</td><td>Portfolio import (stocks)</td><td><span class="tier t1">Bottom</span></td><td>Already correct ✓</td><td class="good">Best in class</td></tr>
+        <tr><td>SIF drip journey</td><td>SIF invest page (WA4+)</td><td><span class="tier t1">Bottom</span></td><td>Already correct for WA4+ ✓</td><td class="warn">WA1–3 still use Login OTP</td></tr>
+        <tr><td>Global Webinar</td><td>Click (reg link)</td><td><span class="tier t2">Mid-High</span></td><td>Webinar attendance confirmed</td><td class="warn">Click ≠ attendance — add attendance webhook</td></tr>
+        <tr><td>Brand CLM</td><td>Portfolio pull</td><td><span class="tier t1">Bottom</span></td><td>Already correct ✓</td><td class="good">Fix delivery first, then attribution will reflect</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>Ionic Wealth · WebEngage Performance Intelligence Report · April 2026</div>
+  <div>Prepared by Sumairah Rashid · Growth &amp; CRM · Confidential</div>
+</div>
+
+</div>
+</body>
+</html>
